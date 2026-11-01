@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitZone Gym & Fitness Center</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar untuk modal */
+        .modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-body::-webkit-scrollbar-thumb {
+            background-color: #475569;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white font-sans antialiased">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 w-full bg-slate-900/90 backdrop-blur-md z-40 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="text-2xl font-black text-amber-500 tracking-wider">FIT<span class="text-white">ZONE</span></a>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#home" class="hover:text-amber-500 transition">Beranda</a>
+                <a href="#fasilitas" class="hover:text-amber-500 transition">Fasilitas</a>
+                <a href="#harga" class="hover:text-amber-500 transition">Harga</a>
+                <a href="#kontak" class="hover:text-amber-500 transition">Kontak</a>
+            </div>
+            <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20tanya%20membership%20gym" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-4 py-2 rounded-lg transition text-sm sm:text-base">
+                Join Sekarang
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1500&q=80');">
+        <div class="text-center max-w-3xl px-4 mt-16">
+            <h1 class="text-4xl sm:text-6xl font-extrabold uppercase tracking-tight mb-4">
+                Bentuk Tubuh <span class="text-amber-500">Impianmu</span> Hari Ini
+            </h1>
+            <p class="text-slate-300 text-base sm:text-lg mb-8 max-w-xl mx-auto">
+                Fasilitas gym modern, alat lengkap, dan instruktur profesional siap membantu mencapai target kebugaran Anda.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#harga" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-8 py-3 rounded-lg text-lg transition">
+                    Lihat Paket
+                </a>
+                <a href="https://wa.me/6281234567890?text=Halo%20saya%20mau%20coba%20Free%20Trial" target="_blank" class="border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-slate-900 font-bold px-8 py-3 rounded-lg text-lg transition">
+                    Coba Free Trial
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FASILITAS SECTIONS (INTERACTIVE CARDS) -->
+    <section id="fasilitas" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold uppercase text-amber-500">Fasilitas & Layanan</h2>
+            <p class="text-slate-400 mt-2">Klik kartu di bawah ini untuk melihat detail lengkap</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1: Peralatan -->
+            <div onclick="openModal('modal-alat')" class="cursor-pointer bg-slate-800 p-8 rounded-xl text-center hover:-translate-y-2 hover:border-amber-500 transition duration-300 border border-slate-700 group">
+                <div class="w-16 h-16 bg-amber-500/10 text-amber-500 group-hover:bg-amber-500 group-hover:text-slate-900 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl transition">
+                    <i class="fa-solid fa-dumbbell"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Peralatan Lengkap</h3>
+                <p class="text-slate-400 text-sm mb-4">Mesin beban modern, cardio, dan area free weights lengkap.</p>
+                <span class="text-amber-500 font-semibold text-sm group-hover:underline">Klik untuk Detail &rarr;</span>
+            </div>
+
+            <!-- Card 2: Personal Trainer -->
+            <div onclick="openModal('modal-trainer')" class="cursor-pointer bg-slate-800 p-8 rounded-xl text-center hover:-translate-y-2 hover:border-amber-500 transition duration-300 border border-slate-700 group">
+                <div class="w-16 h-16 bg-amber-500/10 text-amber-500 group-hover:bg-amber-500 group-hover:text-slate-900 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl transition">
+                    <i class="fa-solid fa-user-ninja"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Personal Trainer</h3>
+                <p class="text-slate-400 text-sm mb-4">Tim pelatih profesional bersertifikat Siap membantu targetmu.</p>
+                <span class="text-amber-500 font-semibold text-sm group-hover:underline">Lihat Profil Trainer &rarr;</span>
+            </div>
+
+            <!-- Card 3: Fasilitas Gym -->
+            <div onclick="openModal('modal-fasilitas')" class="cursor-pointer bg-slate-800 p-8 rounded-xl text-center hover:-translate-y-2 hover:border-amber-500 transition duration-300 border border-slate-700 group">
+                <div class="w-16 h-16 bg-amber-500/10 text-amber-500 group-hover:bg-amber-500 group-hover:text-slate-900 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl transition">
+                    <i class="fa-solid fa-building-circle-check"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Fasilitas Gym</h3>
+                <p class="text-slate-400 text-sm mb-4">Area shower air hangat, loker aman, dan area parkir luas.</p>
+                <span class="text-amber-500 font-semibold text-sm group-hover:underline">Lihat Semua Fasilitas &rarr;</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAKET HARGA -->
+    <section id="harga" class="py-20 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold uppercase text-amber-500">Pilihan Membership</h2>
+                <p class="text-slate-400 mt-2">Pilih paket keanggotaan yang sesuai dengan kebutuhanmu</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Harian -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-300">Harian (Daily Pass)</h3>
+                        <div class="my-4">
+                            <span class="text-4xl font-extrabold">Rp 35.000</span>
+                            <span class="text-slate-500">/hari</span>
+                        </div>
+                        <ul class="space-y-3 text-slate-400 text-sm mb-8">
+                            <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Akses 1 Hari</li>
+                            <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Bebas Pakai Semua Alat</li>
+                            <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Fasilitas Locker & Shower</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6281234567890?text=Halo%20saya%20mau%20beli%20Daily%20Pass" target="_blank" class="block text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl transition">
+                        Beli Harian
+                    </a>
+                </div>
+
+                <!-- Bulanan (Best Value) -->
+                <div class="bg-slate-900 border-2 border-amber-500 rounded-2xl p-8 flex flex-col justify-between relative transform md:-translate-y-4 shadow-xl shadow-amber-500/10">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-900 font-extrabold text-xs px-3 py-1 rounded-full uppercase">Paling Populer</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-amber-500">Member 1 Bulan</h3>
+                        <div class="my-4">
+                            <span class="text-4xl font-extrabold">Rp 250.000</span>
+                            <span class="text-slate-500">/bulan</span>
+                        </div>
+                        <ul class="space-y-3 text-slate-300 text-sm mb-8">
+                            <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Akses Unlimited 30 Hari</li>
+                            <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Bebas Konsultasi Trainer awal</li>
+                            <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Gratis Merchandise / Shaker</li>
+                            <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Fasilitas Loker & Shower</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6285726896443?text=Halo%20saya%20mau%20daftar%20Member%201%20Bulan" target="_blank" class="block text-center bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 rounded-xl transition">
+                        Daftar Member
+                    </a>
+                </div>
+
+                <!-- 3 Bulan -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-300">Member 3 Bulan</h3>
+                        <div class="my-4">
+                            <span class="text-4xl font-extrabold">Rp 650.000</span>
+                            <span class="text-slate-500">/3 bulan</span>
+                        </div>
+                        <ul class="space-y-3 text-slate-400 text-sm mb-8">
+                            <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Akses Unlimited 90 Hari</li>
+                            <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>Hemat Rp 100.000</li>
+                            <li><i class="fa-solid fa-check text-amber-500 mr-2"></i>1x Sesi Personal Trainer</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6285726896443?text=Halo%20saya%20mau%20daftar%20Member%203%20Bulan" target="_blank" class="block text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl transition">
+                        Daftar Paket
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & KONTAK -->
+    <footer id="kontak" class="bg-slate-900 border-t border-slate-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-2xl font-black text-amber-500 mb-4">FITZONE</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Pusat kebugaran terbaik untuk membantu Anda mencapai bentuk tubuh ideal dan pola hidup yang lebih sehat.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Jam Operasional</h4>
+                <p class="text-slate-400 text-sm">Senin - Jumat: 06:00 - 22:00 WITA</p>
+                <p class="text-slate-400 text-sm mt-1">Sabtu - Minggu: 07:00 - 20:00 WITA</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Hubungi Kami</h4>
+                <p class="text-slate-400 text-sm"><i class="fa-brands fa-whatsapp text-amber-500 mr-2"></i>+62 812-3456-7890</p>
+                <p class="text-slate-400 text-sm mt-2"><i class="fa-solid fa-location-dot text-amber-500 mr-2"></i>Jl. Raya Utama No. 88, Bali</p>
+            </div>
+        </div>
+        <div class="text-center text-slate-600 text-xs mt-12 pt-6 border-t border-slate-800">
+            &copy; 2026 FitZone Gym. All rights reserved.
+        </div>
+    </footer>
+
+
+    <!-- ================================================================= -->
+    <!-- MODAL POP-UP SECTION -->
+    <!-- ================================================================= -->
+
+<!-- 1. POPUP PERALATAN GYM -->
+<div id="modal-alat" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden items-center justify-center p-2 sm:p-4">
+    <div class="bg-stone-200 text-stone-900 border border-stone-300 rounded-none max-w-5xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl relative font-sans">
+        
+        <!-- Header dengan Tombol Tutup & Zoom -->
+        <div class="p-4 sm:p-6 bg-stone-200 border-b border-stone-300 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-xl sm:text-2xl font-black tracking-wider uppercase">FitZone GYM</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button onclick="closeModal('modal-alat')" class="p-2 text-stone-700 hover:text-black rounded-full hover:bg-stone-300 transition text-2xl font-light leading-none">
+                    &times;
+                </button>
+            </div>
+        </div>
+
+        <!-- Body Scrollable -->
+        <div class="p-4 sm:p-8 overflow-y-auto modal-body space-y-8 bg-stone-200">
+            
+
+            <!-- Grid Produk Peralatan Gym -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                
+                <!-- Card 1: Flat/Incline Bench -->
+                <div class="bg-stone-300/60 p-4 rounded-none flex flex-col justify-between group hover:shadow-lg transition">
+                    <div class="relative bg-stone-300 h-52 flex items-center justify-center overflow-hidden mb-3">
+                        <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=400&q=80" alt="Adjustable Bench" class="object-cover absolute inset-0 h-full w-full group-hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-sm text-stone-900 leading-tight">Adjustable Gym Bench</h4>
+                        <p class="text-[11px] text-stone-600">Manfaat: Menopang latihan press chest & shoulder dengan aman.</p>
+                        <div class="flex items-center space-x-2 text-xs pt-1">
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Card 2: Steel Weight Plates -->
+                <div class="bg-stone-300/60 p-4 rounded-none flex flex-col justify-between group hover:shadow-lg transition">
+                    <div class="relative bg-stone-300 h-52 flex items-center justify-center overflow-hidden mb-3">
+                        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=400&q=80" alt="Steel Weight Plates" class="object-cover absolute inset-0 h-full w-full group-hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-sm text-stone-900 leading-tight">Steel Weight Plates (Pair)</h4>
+                        <p class="text-[11px] text-stone-600">Manfaat: Menambah beban latihan barbell untuk hipertrofi otot.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Rubber Loadable Dumbbell -->
+                <div class="bg-stone-300/60 p-4 rounded-none flex flex-col justify-between group hover:shadow-lg transition">
+                    <div class="relative bg-stone-300 h-52 flex items-center justify-center overflow-hidden mb-3">
+                        <img src="asset/dumbel.jpg" alt="Rubber Dumbbell" class=" object-cover absolute insh-full w-full group-hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-sm text-stone-900 leading-tight">Rubber Loadable Dumbbell (Pair)</h4>
+                        <p class="text-[11px] text-stone-600">Manfaat: Mengisolasi otot lengan & bahu secara fleksibel.</p>
+
+                    </div>
+                </div>
+
+                <!-- Card 4: Steel Loadable Dumbbells -->
+                <div class="bg-stone-300/60 p-4 rounded-none flex flex-col justify-between group hover:shadow-lg transition">
+                    <div class="relative bg-stone-300 h-52 flex items-center justify-center overflow-hidden mb-3">
+                        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80" alt="Chrome Dumbbell" class="max-h-44 object-contain group-hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-sm text-stone-900 leading-tight">Steel Loadable Dumbbells</h4>
+                        <p class="text-[11px] text-stone-600">Manfaat: Latihan kekuatan serbaguna dari 6-24 kg.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Adjustable Kettlebell -->
+                <div class="bg-stone-300/60 p-4 rounded-none flex flex-col justify-between group hover:shadow-lg transition">
+                    <div class="relative bg-stone-300 h-52 flex items-center justify-center overflow-hidden mb-3">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80" alt="Kettlebell" class="max-h-44 object-contain group-hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-sm text-stone-900 leading-tight">Adjustable Kettlebell (4-18 kg)</h4>
+                        <p class="text-[11px] text-stone-600">Manfaat: Meningkatkan daya tahan, kekuatan inti & kardio.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6: Monster Squat Rack -->
+                <div class="bg-stone-300/60 p-4 rounded-none flex flex-col justify-between group hover:shadow-lg transition">
+                    <div class="relative bg-stone-300 h-52 flex items-center justify-center overflow-hidden mb-3">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80" alt="Squat Rack" class="max-h-44 object-contain group-hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-sm text-stone-900 leading-tight">Monster Squat Rack</h4>
+                        <p class="text-[11px] text-stone-600">Manfaat: Keamanan maksimal saat latihan squat & overhead press.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Shop By Goal Categories -->
+
+
+        </div>
+    </div>
+</div>
+    <!-- 2. POPUP PERSONAL TRAINER -->
+    <div id="modal-trainer" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-4xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl">
+            <!-- Header -->
+            <div class="p-6 border-b border-slate-800 flex justify-between items-center">
+                <h3 class="text-2xl font-bold text-amber-500"><i class="fa-solid fa-user-ninja mr-2"></i>Tim Personal Trainer</h3>
+                <button onclick="closeModal('modal-trainer')" class="text-slate-400 hover:text-white text-2xl font-bold">&times;</button>
+            </div>
+            <!-- Body -->
+            <div class="p-6 overflow-y-auto modal-body space-y-6">
+                
+                <!-- Trainer 1 -->
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 flex flex-col sm:flex-row gap-6 items-center">
+                    <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=400&q=80" alt="Coach Alex" class="w-32 h-32 rounded-full object-cover border-2 border-amber-500 flex-shrink-0">
+                    <div class="space-y-2 text-center sm:text-left">
+                        <h4 class="text-xl font-bold text-white">Coach Alex Wijaya <span class="text-amber-500 text-sm font-normal">(Master Trainer)</span></h4>
+                        <div class="flex flex-wrap gap-2 justify-center sm:justify-start text-xs">
+                            <span class="bg-amber-500/10 text-amber-500 px-3 py-1 rounded-full border border-amber-500/20"><i class="fa-solid fa-users mr-1"></i>120+ Orang Dilatih</span>
+                            <span class="bg-slate-700 text-slate-300 px-3 py-1 rounded-full"><i class="fa-solid fa-award mr-1"></i>Pengalaman 7+ Tahun</span>
+                        </div>
+                        <p class="text-slate-300 text-sm"><strong class="text-amber-500">Keahlian:</strong> Hypertrophy (Pembentukan Otot), Bodybuilding, & Fat Loss Program.</p>
+                        <p class="text-slate-400 text-xs leading-relaxed">Spesialis transformasi bentuk tubuh pria dan wanita dengan pendekatan nutrisi terukur dan metode beban terencana.</p>
+                    </div>
+                </div>
+
+                <!-- Trainer 2 -->
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 flex flex-col sm:flex-row gap-6 items-center">
+                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=400&q=80" alt="Coach Sarah" class="w-32 h-32 rounded-full object-cover border-2 border-amber-500 flex-shrink-0">
+                    <div class="space-y-2 text-center sm:text-left">
+                        <h4 class="text-xl font-bold text-white">Coach Sarah Kirana <span class="text-amber-500 text-sm font-normal">(Senior Specialist)</span></h4>
+                        <div class="flex flex-wrap gap-2 justify-center sm:justify-start text-xs">
+                            <span class="bg-amber-500/10 text-amber-500 px-3 py-1 rounded-full border border-amber-500/20"><i class="fa-solid fa-users mr-1"></i>95+ Orang Dilatih</span>
+                            <span class="bg-slate-700 text-slate-300 px-3 py-1 rounded-full"><i class="fa-solid fa-award mr-1"></i>Pengalaman 5 Tahun</span>
+                        </div>
+                        <p class="text-slate-300 text-sm"><strong class="text-amber-500">Keahlian:</strong> Weight Loss, Female Fitness Specialist, & Posture Correction.</p>
+                        <p class="text-slate-400 text-xs leading-relaxed">Berfokus membantu klien wanita mencapai tubuh ideal, mengencangkan otot, dan perbaikan postur tubuh yang seimbang.</p>
+                    </div>
+                </div>
+
+                <!-- Trainer 3 -->
+                <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 flex flex-col sm:flex-row gap-6 items-center">
+                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80" alt="Coach Budi" class="w-32 h-32 rounded-full object-cover border-2 border-amber-500 flex-shrink-0">
+                    <div class="space-y-2 text-center sm:text-left">
+                        <h4 class="text-xl font-bold text-white">Coach Budi Santoso <span class="text-amber-500 text-sm font-normal">(Strength Coach)</span></h4>
+                        <div class="flex flex-wrap gap-2 justify-center sm:justify-start text-xs">
+                            <span class="bg-amber-500/10 text-amber-500 px-3 py-1 rounded-full border border-amber-500/20"><i class="fa-solid fa-users mr-1"></i>150+ Orang Dilatih</span>
+                            <span class="bg-slate-700 text-slate-300 px-3 py-1 rounded-full"><i class="fa-solid fa-award mr-1"></i>Pengalaman 8+ Tahun</span>
+                        </div>
+                        <p class="text-slate-300 text-sm"><strong class="text-amber-500">Keahlian:</strong> Powerlifting, Strength & Conditioning, & Athlete Coaching.</p>
+                        <p class="text-slate-400 text-xs leading-relaxed">Ahli dalam meningkatkan kekuatan fisik maksimal (Squat, Bench, Deadlift) serta latihan fungsional untuk performa tubuh.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. POPUP FASILITAS -->
+    <div id="modal-fasilitas" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-3xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl">
+            <!-- Header -->
+            <div class="p-6 border-b border-slate-800 flex justify-between items-center">
+                <h3 class="text-2xl font-bold text-amber-500"><i class="fa-solid fa-building-circle-check mr-2"></i>Fasilitas Utama Gym</h3>
+                <button onclick="closeModal('modal-fasilitas')" class="text-slate-400 hover:text-white text-2xl font-bold">&times;</button>
+            </div>
+            <!-- Body -->
+            <div class="p-6 overflow-y-auto modal-body grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Fasilitas 1 -->
+                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=500&q=80" alt="Kamar Mandi & Shower" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg text-white"><i class="fa-solid fa-shower text-amber-500 mr-2"></i>Kamar Mandi & Water Heater</h4>
+                        <p class="text-slate-400 text-xs mt-1">Kamar mandi bersih yang dilengkapi pancuran air hangat (water heater) dan sabun gratis.</p>
+                    </div>
+                </div>
+                <!-- Fasilitas 2 -->
+                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700">
+                    <img src="https://images.unsplash.com/photo-1558036117-15d82a90b9b1?auto=format&fit=crop&w=500&q=80" alt="Loker Pribadi" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg text-white"><i class="fa-solid fa-lock text-amber-500 mr-2"></i>Loker Kunci Pribadi</h4>
+                        <p class="text-slate-400 text-xs mt-1">Area ruang ganti dengan ratusan loker ber-kunci untuk keamanan barang berharga Anda.</p>
+                    </div>
+                </div>
+                <!-- Fasilitas 3 -->
+                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700">
+                    <img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=500&q=80" alt="Parkiran Luas" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg text-white"><i class="fa-solid fa-square-parking text-amber-500 mr-2"></i>Area Parkir Luas & Aman</h4>
+                        <p class="text-slate-400 text-xs mt-1">Lahan parkir khusus mobil dan motor yang luas, aman, serta terpantau kamera CCTV 24 jam.</p>
+                    </div>
+                </div>
+                <!-- Fasilitas 4 -->
+                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=500&q=80" alt="Lounge Area" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg text-white"><i class="fa-solid fa-mug-hot text-amber-500 mr-2"></i>Rest Area & Health Bar</h4>
+                        <p class="text-slate-400 text-xs mt-1">Tempat bersantai pasca latihan yang menyediakan protein shake dan air mineral dingin gratis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT JAVASCRIPT UNTUK MODAL -->
+    <script>
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Menghentikan scroll latar belakang
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Mengembalikan scroll
+        }
+
+        // Tutup modal jika pengguna mengklik area luar pop-up (backdrop)
+        window.onclick = function(event) {
+            const modals = ['modal-alat', 'modal-trainer', 'modal-fasilitas'];
+            modals.forEach(id => {
+                const modal = document.getElementById(id);
+                if (event.target === modal) {
+                    closeModal(id);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
